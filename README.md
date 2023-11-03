@@ -102,4 +102,14 @@ export const db = async (req, res) => {
         res.json (id,name,salary)
         }
 ```
+* ejemplo de POST:
+```
+import { pool } from "../db.js";
 
+export const postEmployees = async (req, res) => {
+const {name, salary} = req.body;
+const [rows] = await pool.query('INSERT INTO employee (name, salary) VALUES (?, ?)',[name, salary])
+console.log(req.body);
+res.send({rows});
+};
+```
