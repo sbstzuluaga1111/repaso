@@ -136,7 +136,7 @@ res.send({rows});
 ```
 
 
-*ejemplo de DELETE:ID :
+* ejemplo de DELETE:ID :
 
 ```
 import { pool } from "../db.js";
@@ -145,5 +145,20 @@ export const deleteEmployees = async (req, res) => {
 const resultado = await pool.query('DELETE FROM employee WHERE id = ?', [req.params.id])
 console.log(resultado)
 res.send('Eliminado')
+}
+```
+* ejemplo de UPDATE:ID :
+
+```
+import { pool } from "../db.js";
+
+export const putEmployees = async (req, res) => {
+const {id} = req.params
+const {name, salary} = req.body
+
+const [resultado] = await pool.query('UPDATE employee SET name = ?, salary = ? WHERE id = ?',[name,salary,id]);
+
+console.log(resultado);
+res.json('Resibido');
 }
 ```
