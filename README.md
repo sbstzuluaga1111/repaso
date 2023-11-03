@@ -113,3 +113,14 @@ console.log(req.body);
 res.send({rows});
 };
 ```
+
+* ejemplo de GET ALL:
+```
+import { pool } from "../db.js";
+
+export const getEmployees = async (req, res) => {
+const [rows] = await pool.query('SELECT * FROM employee')
+console.log(req.body);
+res.send({rows});
+}
+```
