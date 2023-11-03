@@ -13,6 +13,7 @@ npm init -y
 npm i express
 npm i nodemon -D
 npm i mysql2
+npm i dotenv
 ```
 
 * Modificamos package.json:
@@ -86,7 +87,7 @@ import {createPool} from 'mysql2/promise'
 export const pool = createPool({
     host: 'localhost',
     user: 'root',
-    password: 'sebasz1111',
+    password: 'contraseña',
     port: 3306,
     database: 'ejemplo',
 })
@@ -161,4 +162,69 @@ const [resultado] = await pool.query('UPDATE employee SET name = ?, salary = ? W
 console.log(resultado);
 res.json('Resibido');
 }
+```
+* Variables de entorno:
+
+.env
+```
+{
+PORT=3000
+DB_HOST=localhost
+DB_PORT=3306
+DB_USER=root
+DB_PASSWORD=contraseña
+DB_DATABASE=ejemplo
+}
+```
+
+Importacion:
+
+config.js:
+```
+import {config} from 'dotenv';
+
+config()
+
+export const PORT = process.env.PORT || 3000
+export const DB_USER = process.env.DB_USER || 'root'
+export const DB_PASSWORD = process.env.DB_PASSWORD || 'contraseña'
+export const DB_HOST = process.env.DB_HOST || 'localhost'
+export const DB_DATABASE= process.env.DB_DATABASE || 'ejemplo'
+export const DB_PORT = process.env.DB_PORT || 3306
+```
+
+index.js:
+```
+//Server
+import express from "express";
+import {PORT} from '.config.js';
+const app =express()
+
+app.use(express.json());
+
+app.listen(PORT);
+console.log("Server encendido :D", PORT)
+```
+
+
+db.js:
+```
+//base de datos
+import {createPool} from 'mysql2/promise'
+import {
+    DB_DATABASE,
+    DB_HOST,
+    DB_PASSWORD,
+    DB_PORT,
+    DB_USER
+} from '.config.js';
+
+export const pool = createPool({
+    host: DB_HOST,
+    user: DB_USER,
+    password: DB_PASSWORD,
+    port: DB_PORT,
+    database: DB_DATABASE,
+})
+
 ```
