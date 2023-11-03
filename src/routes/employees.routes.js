@@ -11,9 +11,14 @@ import { postEmployees} from "../controllers/post.controller.js";
 router.post('/', postEmployees); //postEmployees se trae de los controllers
 
 import { putEmployees } from "../controllers/put.controller.js";
-router.put('/', putEmployees);//putEmployees se trae de los controllers
+router.put('/:id', putEmployees);//putEmployees se trae de los controllers
 
 import { deleteEmployees } from "../controllers/delete.controller.js";
-router.delete('/', deleteEmployees);//deleteEmployees se trae de los controllers
-    
+router.delete('/:id', deleteEmployees);//deleteEmployees se trae de los controllers
+ 
+
+/// GET con id especifico
+import { getEmployeesID } from "../controllers/get-id.controller.js";
+router.get('/:id', getEmployeesID);
+
 export default router;

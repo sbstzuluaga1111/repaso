@@ -1,8 +1,12 @@
 //Server
 import express from "express";
+import {PORT} from '.config.js';
 const app =express()
-app.listen(3000)
-console.log("Server encendido :D")
+
+app.use(express.json());
+
+app.listen(PORT);
+console.log("Server encendido :D", PORT)
 
 //rutas importadas
 import employeesRoutes from "./routes/employees.routes.js";

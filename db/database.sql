@@ -9,3 +9,11 @@ salary INT(5) DEFAULT NULL,
 PRIMARY KEY (id)
 );
 DESCRIBE employee;
+
+INSERT INTO employee VALUES 
+(1,'John',1000),
+(2,'Pepe',2000),
+(3,'Sama',2500),
+(4,'aaa',3000);
+
+SELECT * FROM employee;
