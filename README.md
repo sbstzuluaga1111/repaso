@@ -5,6 +5,9 @@
 npm init -y
 ```
 
+.gitignore:
+(node_modules , coverage)
+
 * Descargar las dependencias:
 ```
 npm i express
