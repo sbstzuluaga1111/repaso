@@ -134,3 +134,16 @@ const [rows] = await pool.query('SELECT * FROM employee WHERE id = ?', [req.para
 res.send({rows});
 }
 ```
+
+
+*ejemplo de DELETE:ID :
+
+```
+import { pool } from "../db.js";
+
+export const deleteEmployees = async (req, res) => {
+const resultado = await pool.query('DELETE FROM employee WHERE id = ?', [req.params.id])
+console.log(resultado)
+res.send('Eliminado')
+}
+```
