@@ -1,0 +1,17 @@
+git init
+git add .
+git status
+git comit -m "Documentos"
+git push origin master
+git push origin       
+git push --set-upstream origin master
+git push
+git remote add repaso https://github.com/sbstzuluaga1111/repaso.git
+git push
+git push --set-upstream repaso master
+git branch
+git branch zuluaga
+git branch        
+git branch
+git push --set-upstream repaso zuluaga
+git push
